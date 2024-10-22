@@ -45,7 +45,7 @@ Ensure you have the following installed:
    git clone https://github.com/Ranvijaykumar9708/Weather_app.git
    cd flutter_weather_app
 
-### Important Note:- I have not shared open weather api_key publically because if i'll then that key will not work so i'm sharing you on whatsapp you can create .env file in this project folder and just page following content.
+### Important Note:- I have not shared open weather api_key publically because if i'll then that key will not work so i'm sharing you on whatsapp you can create .env file in this project folder and just add following code.
 1. *Create .env file and add this code
 
 - API_KEY=api_key 
