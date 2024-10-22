@@ -38,7 +38,7 @@ Ensure you have the following installed:
 
 1. *Clone the Repository*:
    ```bash
-   git clone https://github.com/yourusername/flutter_weather_app.git
+   git clone https://github.com/Ranvijaykumar9708/Weather_app.git
    cd flutter_weather_app
 
 ### Project structure
