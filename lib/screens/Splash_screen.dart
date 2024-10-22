@@ -54,14 +54,14 @@ class Splashscreen extends StatelessWidget {
                         children: [
                            const Text("Weather",
                         style: TextStyle(
-                          color: Colors.white,fontSize: 50,fontWeight: FontWeight.w900
+                          color: Colors.white,fontSize: 40,fontWeight: FontWeight.w900
                         ),
                         ),
                         
                          const Text("ForeCasts",
                          
                         style: TextStyle(
-                          color: ColorConstant.yelloColor,fontSize: 50,fontWeight: FontWeight.w300
+                          color: ColorConstant.yelloColor,fontSize: 40,fontWeight: FontWeight.w300
                         ),
                         ),
                         SizedBox(height: 20,),
@@ -78,7 +78,7 @@ class Splashscreen extends StatelessWidget {
                               color: ColorConstant.yelloColor
                             ),
                             alignment: Alignment.center,
-                          child:   Text("Get Started",
+                          child:   const Text("Get Started",
                           style: TextStyle(
                             color: ColorConstant.blueColor,fontSize: 20,fontWeight: FontWeight.w600
                           ),

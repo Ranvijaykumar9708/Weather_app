@@ -164,14 +164,14 @@ class Wind {
     required this.deg,
     required this.gust,
   });
-  late final double speed;
-  late final int deg;
-  late final double gust;
+  late final String speed;
+  late final String deg;
+  late final String gust;
   
   Wind.fromJson(Map<String, dynamic> json){
-    speed = json['speed'];
-    deg = json['deg'];
-    gust = json['gust'];
+    speed = json['speed'].toString();
+    deg = json['deg'].toString();
+    gust = json['gust'].toString();
   }
 
   Map<String, dynamic> toJson() {

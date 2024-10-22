@@ -46,10 +46,9 @@ class HomepageController extends GetxController {
         toastHelper.showErrorMessage(message: 'City Not Found');
         //error.....
       }
-
       update();
-    } catch (e) {
-      print(e);
+    } catch (e,_) {
+      print(_);
        toastHelper.showErrorMessage(message: 'City Not Found');
     } finally {
       LoaderUtil.hideLoader();
@@ -72,7 +71,8 @@ class HomepageController extends GetxController {
          toastHelper.showErrorMessage(message: 'Currently Weather not found, please try again');
         //error.....
       }
-    } catch (e) {
+    } catch (e,_) {
+      print(_);
         toastHelper.showErrorMessage(message: 'City Not Found');
     } finally {
       LoaderUtil.hideLoader();
@@ -95,7 +95,8 @@ class HomepageController extends GetxController {
        toastHelper.showErrorMessage(message: 'Currently Forecast not available for this city');
       //error.....
     }
-    }catch(e){
+    }catch(e,_){
+      print(_);
         toastHelper.showErrorMessage(message: 'Something went wrong, please try again!');
      
     }

@@ -65,7 +65,7 @@ class WeatherResultPage extends StatelessWidget {
                     SizedBox(height: 10,),
                      Text(
                       
-                       "Max: ${homepageController.getWeatherApiResponseModel!.listData[0].main.tempMax.toStringAsFixed(0)}° Min:${homepageController.getWeatherApiResponseModel!.listData[0].main.tempMin.toStringAsFixed(0)}°",
+                       "Max: ${homepageController.getWeatherApiResponseModel!.listData[0].main.tempMax}° Min:${homepageController.getWeatherApiResponseModel!.listData[0].main.tempMin}°",
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.white,
@@ -136,7 +136,7 @@ class WeatherResultPage extends StatelessWidget {
                                             width: dipslayWidth(context)/5.5,
                                             child: Column(
                                                                         children: [
-                                                                          Text("${homepageController.getWeatherApiResponseModel!.listData[i].main.temp.toStringAsFixed(0)}°",
+                                                                          Text("${homepageController.getWeatherApiResponseModel!.listData[i].main.temp}°",
                                                                           style: TextStyle(
                                                                             color: Colors.white,fontSize: 18
                                                                           ),

@@ -92,25 +92,25 @@ class Main {
     required this.humidity,
     required this.tempKf,
   });
-  late final double temp;
-  late final double feelsLike;
-  late final double tempMin;
-  late final double tempMax;
-  late final int pressure;
-  late final int seaLevel;
-  late final int grndLevel;
-  late final int humidity;
+  late final String temp;
+  late final String feelsLike;
+  late final String tempMin;
+  late final String tempMax;
+  late final String pressure;
+  late final String seaLevel;
+  late final String grndLevel;
+  late final String humidity;
   late final String? tempKf;
   
   Main.fromJson(Map<String, dynamic> json){
-    temp = json['temp'];
-    feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
-    pressure = json['pressure'];
-    seaLevel = json['sea_level'];
-    grndLevel = json['grnd_level'];
-    humidity = json['humidity'];
+    temp = json['temp'].toStringAsFixed(0);
+    feelsLike = json['feels_like'].toString();
+    tempMin = json['temp_min'].toStringAsFixed(0);
+    tempMax = json['temp_max'].toStringAsFixed(0);
+    pressure = json['pressure'].toString();
+    seaLevel = json['sea_level'].toString();
+    grndLevel = json['grnd_level'].toString();
+    humidity = json['humidity'].toString();
     tempKf = json['temp_kf'].toString();
   }
 
@@ -181,13 +181,13 @@ class Wind {
     required this.deg,
     required this.gust,
   });
-  late final double speed;
-  late final int deg;
+  late final String speed;
+  late final String deg;
   late final String? gust;
   
   Wind.fromJson(Map<String, dynamic> json){
-    speed = json['speed'];
-    deg = json['deg'];
+    speed = json['speed'].toString();
+    deg = json['deg'].toString();
     gust = json['gust'].toString();
   }
 
