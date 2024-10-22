@@ -42,6 +42,7 @@ Ensure you have the following installed:
    cd flutter_weather_app
 
 ### Project structure
+```bash
 lib/
 │
 ├── controllers/       # Contains GetX controllers for state management
