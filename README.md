@@ -2,64 +2,52 @@
 
 ## Overview
 
-The *Flutter Weather App* is a modern mobile application built with *Flutter* and *GetX* for state management. It allows users to search for a city and retrieve current weather conditions using the *OpenWeatherMap API*. The app is designed to provide a smooth user experience with a responsive layout and a clean interface.
+The **Flutter Weather App** is a modern mobile application built with **Flutter** and **GetX** for state management. It enables users to search for a city and retrieve real-time weather information using the **OpenWeatherMap API**. Designed for a seamless experience, the app features a responsive layout, clean interface, and efficient error handling.
 
 ## Features
 
-- *User-Friendly Interface*: A simple and intuitive design for easy navigation.
-- *City Search*: Users can enter a city name to get current weather information.
-- *Current Weather Details*:
+- **User-Friendly Interface**: A simple and intuitive design for easy navigation.
+- **City Search**: Users can search for any city to retrieve the current weather details.
+- **Current Weather Details**:
   - City Name
   - Current Temperature
   - Weather Condition (e.g., sunny, rainy)
-- *Responsive Design*: Optimized for various screen sizes using Flutter's layout widgets.
-- *Loading Indicator*: A visual spinner to indicate that data is being fetched.
-- *Error Handling*: Displays meaningful messages for invalid city names or network errors.
-- *Animations*: Smooth fade-in effects for displaying weather data.
-- *Dark Mode Support*: Toggle between light and dark themes based on user preference.
+- **Responsive Design**: Optimized for different screen sizes with Flutter's layout widgets.
+- **Loading Indicator**: Visual feedback to indicate data is being fetched.
+- **Error Handling**: Displays meaningful messages for invalid city names or network errors.
+- **Animations**: Smooth fade-in effects for displaying weather data.
+- **Dark Mode Support**: Toggle between light and dark themes based on user preference.
+- **Local Notifications**:
+  - **Full-Screen Intent Notifications**: Displays like an alarm, activating the screen even when the device is locked for high-visibility events such as reminders.
+  - **Different Notification Types**:
+    - **Standard Notifications**: Regular push notifications for standard updates.
+    - **Heads-Up Notifications**: Overlay notifications for immediate visibility.
+    - **Full-Screen Notifications**: Automatically navigates to the appropriate screen in the app.
+  - Notifications are managed with `flutter_local_notifications` for scheduling and navigation.
 
-## Screenrecording of the application
-- Android app Screenrecording you can access from [here](https://drive.google.com/file/d/1ugsdUeeswPa9xHPm7m5ESEPj1DqmQR1j/view?usp=sharing)
-- iOS app Screenrecording you can access from [here](https://drive.google.com/file/d/12FvNxXJv3wAwgXAPzdEZHsAwIq8z0aDH/view?usp=sharing)
+## Screenrecording of the Application
+- [Android App Screenrecording](https://drive.google.com/file/d/1ugsdUeeswPa9xHPm7m5ESEPj1DqmQR1j/view?usp=sharing)
+- [iOS App Screenrecording](https://drive.google.com/file/d/12FvNxXJv3wAwgXAPzdEZHsAwIq8z0aDH/view?usp=sharing)
 
-## Skills I have used to make This App
+## Skills Used to Build This App
 
-- Flutter SDK
-- Dart
-- GetX for state management
-- OpenWeatherMap API for weather data retrieval
+- **Flutter SDK**
+- **Dart**
+- **GetX** for state management
+- **OpenWeatherMap API** for weather data retrieval
 
 ## Setup Instructions
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Make sure you have the following installed:
 
-- Flutter SDK (Follow the instructions [here](https://flutter.dev/docs/get-started/install))
-- An IDE such as Android Studio or Visual Studio Code
+- **Flutter SDK** (Follow the instructions [here](https://flutter.dev/docs/get-started/install))
+- An IDE like **Android Studio** or **Visual Studio Code**
 
 ### Installation Steps
 
-1. *Clone the Repository*:
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Ranvijaykumar9708/Weather_app.git
    cd flutter_weather_app
-
-### Important Note:- I have not shared open weather api_key publically because if i'll then that key will not work so i'm sharing you on whatsapp you can create .env file in this project folder and just add following code.
-1. *Create .env file and add this code
-
-- API_KEY=api_key 
-
-here replace api_key with actual api key which i have shared on whatsapp or you can create your own.
-
-
-### Project structure
-```bash
-lib/
-│
-├── controllers/       # Contains GetX controllers for state management
-├── models/            # Contains data models for parsing API responses
-├── services/          # API service classes for fetching weather data
-├── views/             # UI components and screens
-├── main.dart          # Entry point of the application
-└── utils/             # Utility functions and constants

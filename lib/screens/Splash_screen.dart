@@ -85,6 +85,26 @@ class Splashscreen extends StatelessWidget {
                           ),
                           ),
                         ),
+                        
+                         SizedBox(height: 20,),
+                        Bounce(
+                          onTap: (){
+                            splashController.navigateToNotification();
+                          },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: ColorConstant.yelloColor
+                            ),
+                            alignment: Alignment.center,
+                          child:   const Text("Notification Dashboard",
+                          style: TextStyle(
+                            color: ColorConstant.blueColor,fontSize: 18,fontWeight: FontWeight.w600
+                          ),
+                          ),
+                          ),
+                        ),
                         SizedBox(height: 50,)
                       ],
                     ),

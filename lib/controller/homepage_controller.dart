@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geocoding/geocoding.dart';
@@ -13,52 +14,52 @@ import 'package:weather_app/utils/loader_utils.dart';
 import 'package:weather_app/utils/toast_helper.dart';
 
 class HomepageController extends GetxController {
-  WebServices _webServices = new WebServices();
-  TextEditingController searchController = new TextEditingController();
-  var getCityDetailsApiResponse;
+  final WebServices _webServices = WebServices();
+  final TextEditingController searchController = TextEditingController();
+  dynamic getCityDetailsApiResponse;
   GetWeatherApiResponseModel? getWeatherApiResponseModel;
   GetCurrentWeatherApiResponse? getCurrentWeatherApiResponse;
   String apikey = '';
-  int limit = 5;
-  bool isRequesting = true;
-  ToastHelper toastHelper=new ToastHelper();
+  final int limit = 5;
+  final ToastHelper toastHelper = ToastHelper();
 
-
-@override
+  @override
   void onInit() {
     apikey = dotenv.env['API_KEY']!;
-    // TODO: implement onInit
+    FirebaseCrashlytics.instance.setUserIdentifier("user_id");
     super.onInit();
   }
 
-  void fetchCityName() async {
-    LoaderUtil.showLoader();
+  Future<void> fetchCityName() async {
+     LoaderUtil.showLoader();
     try {
       String url =
           '${UrlConstant.getCityDetails}?q=${searchController.text}&limit=$limit&appid=$apikey';
-      print("calling get request api ${DateTime.now()}");
+      print("Calling get request API ${DateTime.now()}");
+      
       var response = await _webServices.getReqeust(url: url);
 
       if (response.status) {
         getCityDetailsApiResponse = response.data;
-        fetchCurrentWeatherDetails();
+        await fetchCurrentWeatherDetails();
       } else {
+         LoaderUtil.hideLoader();
         toastHelper.showErrorMessage(message: 'City Not Found');
-        //error.....
       }
       update();
-    } catch (e,_) {
-      print(_);
-       toastHelper.showErrorMessage(message: 'City Not Found');
+    } catch (e, s) {
+       LoaderUtil.hideLoader();
+      FirebaseCrashlytics.instance.recordError(e, s, fatal: false);
+      toastHelper.showErrorMessage(message: 'City Not Found');
     } finally {
-      LoaderUtil.hideLoader();
+      // LoaderUtil.hideLoader();
     }
   }
 
-  void fetchCurrentWeatherDetails() async {
+  Future<void> fetchCurrentWeatherDetails() async {
     try {
       String url =
-          '${UrlConstant.getCurrentWeather}?lat=${getCityDetailsApiResponse[0]['lat']}&lon=${getCityDetailsApiResponse[0]['lon']}&appid=${apikey}&units=metric';
+          '${UrlConstant.getCurrentWeather}?lat=${getCityDetailsApiResponse[0]['lat']}&lon=${getCityDetailsApiResponse[0]['lon']}&appid=$apikey&units=metric';
 
       var response = await _webServices.getReqeust(url: url);
 
@@ -66,43 +67,49 @@ class HomepageController extends GetxController {
         getCurrentWeatherApiResponse =
             GetCurrentWeatherApiResponse.fromJson(response.data);
         update();
-        fetchForecastingDetails();
+        await fetchForecastingDetails();
       } else {
-         toastHelper.showErrorMessage(message: 'Currently Weather not found, please try again');
-        //error.....
+         LoaderUtil.hideLoader();
+        toastHelper.showErrorMessage(message: 'Currently Weather not found, please try again');
       }
-    } catch (e,_) {
-      print(_);
-        toastHelper.showErrorMessage(message: 'City Not Found');
+    } catch (e, s) {
+       LoaderUtil.hideLoader();
+      FirebaseCrashlytics.instance.recordError(e, s, fatal: false);
+      toastHelper.showErrorMessage(message: 'City Not Found');
     } finally {
-      LoaderUtil.hideLoader();
+      // LoaderUtil.hideLoader();
     }
   }
 
-  void fetchForecastingDetails() async {
-    try{
+  Future<void> fetchForecastingDetails() async {
+    try {
       String url =
-        '${UrlConstant.getWeather}?lat=${getCityDetailsApiResponse[0]['lat']}&lon=${getCityDetailsApiResponse[0]['lon']}&appid=${apikey}&units=metric';
+          '${UrlConstant.getWeather}?lat=${getCityDetailsApiResponse[0]['lat']}&lon=${getCityDetailsApiResponse[0]['lon']}&appid=$apikey&units=metric';
 
-    var response = await _webServices.getReqeust(url: url);
-    LoaderUtil.hideLoader();
-    if (response.status) {
-      getWeatherApiResponseModel =
-          GetWeatherApiResponseModel.fromJson(response.data);
+      var response = await _webServices.getReqeust(url: url);
+       LoaderUtil.hideLoader();
+      
+      if (response.status) {
+        getWeatherApiResponseModel =
+            GetWeatherApiResponseModel.fromJson(response.data);
 
-      _navigateIntoDetailsPage();
-    } else {
-       toastHelper.showErrorMessage(message: 'Currently Forecast not available for this city');
-      //error.....
-    }
-    }catch(e,_){
-      print(_);
-        toastHelper.showErrorMessage(message: 'Something went wrong, please try again!');
-     
+        _navigateIntoDetailsPage();
+      } else {
+         LoaderUtil.hideLoader();
+        toastHelper.showErrorMessage(message: 'Currently Forecast not available for this city');
+      }
+    } catch (e, s) {
+       LoaderUtil.hideLoader();
+      FirebaseCrashlytics.instance.recordError(e, s, fatal: false);
+      toastHelper.showErrorMessage(message: 'Something went wrong, please try again!');
     }
   }
 
-  _navigateIntoDetailsPage() {
-    Get.toNamed(AppRoutes.weather_result);
+  void _navigateIntoDetailsPage() {
+    try{
+      Get.toNamed(AppRoutes.weather_result);
+    }catch(e){
+      print(e);
+    }
   }
 }
