@@ -29,6 +29,8 @@ The **Flutter Weather App** is a modern mobile application built with **Flutter*
 - [Android App Screenrecording](https://drive.google.com/file/d/1ugsdUeeswPa9xHPm7m5ESEPj1DqmQR1j/view?usp=sharing)
 - [iOS App Screenrecording](https://drive.google.com/file/d/12FvNxXJv3wAwgXAPzdEZHsAwIq8z0aDH/view?usp=sharing)
 
+- [Second Assignment Demo with apk ink](https://drive.google.com/drive/folders/13zAtWKLhmuX2N-jntzJM---6yI1gaT6P?usp=sharing)
+
 ## Skills Used to Build This App
 
 - **Flutter SDK**
